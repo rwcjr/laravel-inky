@@ -2,25 +2,25 @@
 
 namespace Petecoop\LaravelInky;
 
-use Illuminate\View\Compilers\Compiler;
+use Illuminate\View\Compilers\BladeCompiler;
 use Illuminate\View\Compilers\CompilerInterface;
 use Illuminate\Filesystem\Filesystem;
 use Hampe\Inky\Inky;
 
-class InkyCompiler extends Compiler implements CompilerInterface
+class InkyCompiler extends BladeCompiler implements CompilerInterface
 {
     protected $inky;
     protected $blade;
     protected $path;
 
-    public function __construct(Compiler $blade, Filesystem $files, $cachePath)
+    public function __construct(BladeCompiler $blade, Filesystem $files, $cachePath)
     {
         parent::__construct($files, $cachePath);
         $this->blade = $blade;
         $this->inky = new Inky();
     }
 
-    public function compile($path = null)
+    public function compile($path = null): void
     {
         if ($path) {
             $this->setPath($path);

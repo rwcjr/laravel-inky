@@ -11,7 +11,7 @@ class InkyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         $this->registerExtension();
     }
@@ -21,7 +21,7 @@ class InkyServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
         $app = $this->app;
         $resolver = $app['view.engine.resolver'];
@@ -37,7 +37,7 @@ class InkyServiceProvider extends ServiceProvider
         });
     }
 
-    protected function registerExtension()
+    protected function registerExtension(): void
     {
         $this->app['view']->addExtension('inky.php', 'inky');
     }
